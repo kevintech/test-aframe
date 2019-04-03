@@ -1,0 +1,31 @@
+{
+  "name": "test-aframe",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "webpack": "webpack",
+    "start": "webpack-dev-server"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/kevintech/test-aframe.git"
+  },
+  "author": "Kevin Herrarte",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/kevintech/test-aframe/issues"
+  },
+  "homepage": "https://github.com/kevintech/test-aframe#readme",
+  "dependencies": {
+    "aframe": "^0.9.0",
+    "aframe-charts-component": "^2.1.1"
+  },
+  "devDependencies": {
+    "d3": "^5.9.2",
+    "webpack": "^4.29.6",
+    "webpack-cli": "^3.2.3",
+    "webpack-dev-server": "^3.2.1"
+  }
+}

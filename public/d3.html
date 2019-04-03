@@ -1,0 +1,31 @@
+<!DOCTYPE html>
+<html lang="en">
+
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Test A-Frame</title>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+    <script src="/assets/d3example.js"></script>
+  </head>
+
+  <body>
+    <a-scene>
+      <a-sky color="#ECECEC"></a-sky>
+
+
+      <a-entity position="2 10 14" rotation="-30 15 0">
+        <a-camera position="3 -1 4" rotation="0 -1 0">
+          <a-cursor></a-cursor>
+        </a-camera>
+      </a-entity>
+      <a-entity mixin="marker" position="-1 2.5 0.01"></a-entity>
+      <a-entity position="-1 2.5 0"
+                text="width: 2; color: red; value: Lorem ipsum dolor sit amet, consectetur adipiscing elit. Ut enim ad minim veniam">
+      </a-entity>
+    </a-scene>
+
+  </body>
+
+</html>
