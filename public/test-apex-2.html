@@ -1,0 +1,50 @@
+<script src="https://aframe.io/releases/0.8.2/aframe.min.js"></script>
+<script src="https://unpkg.com/aframe-charts-component/dist/aframe-charts-component.min.js"></script>
+
+
+#myEmbeddedScene {
+  position: relative;
+  height: 0;
+  width: 100%;
+  padding-top: 56.25%;
+}
+
+#myEmbeddedScene a-scene {
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+  }
+
+  AFRAME.components["charts"].Component.prototype.update = function (newData) {
+  const data = this.data;
+  if (newData != null && newData.dataPoints) {
+    this.loader.load(newData.dataPoints, this.onDataLoaded.bind(this));
+  } else if (data.dataPoints) {
+    console.log(data.dataPoints);
+    this.onDataLoaded(data.dataPoints);
+  } else if (data.type === "totem") {
+    this.generateTotem(data, this.el);
+  }
+}
+
+function getDataWithColors(data) {
+  var colors = ["blue","yellow","red","orange","green","purple"];
+  return data.map(x => {
+    var i = Math.floor(Math.random() * colors.length);
+    x["color"] = colors[i];
+    return x
+  })
+}
+
+
+var aScene = document.querySelector('a-scene');
+$.ajax({method:"GET", url:"https://apex.oracle.com/pls/apex/apptitude/vr/pie"}).done(function(data) {
+    var dataPoints = JSON.stringify(getDataWithColors(data.items));
+    var newVoxelEl = document.createElement('a-entity');
+    console.log(dataPoints);
+    newVoxelEl.setAttribute('charts', 'type: pie; dataPoints: ' + dataPoints + '; pie_radius: 3; show_legend_info: true; show_legend_position: -2 5 7; show_legend_rotation: 0 35 0');
+    newVoxelEl.setAttribute('position', '5 0 0');
+    aScene.appendChild(newVoxelEl);
+})
